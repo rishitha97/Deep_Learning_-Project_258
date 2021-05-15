@@ -111,61 +111,61 @@ def _create_pipeline(pipeline_name: Text, pipeline_root: Text, data_root: Text,
     custom_config=({"epochs": 1})
     )
   # Performs transformations and feature engineering in training and serving.
-  # transform = Transform( # Step 4
-  #     examples=example_gen.outputs['examples'], # Step 4
-  #     schema=infer_schema.outputs['schema'], # Step 4
-  #     module_file=module_file) # Step 4
+  transform = Transform( # Step 4
+      examples=example_gen.outputs['examples'], # Step 4
+      schema=infer_schema.outputs['schema'], # Step 4
+      module_file=module_file) # Step 4
 
   # Uses user-provided Python function that implements a model using TF-Learn.
-  # trainer = Trainer( # Step 5
-  #     module_file=module_file, # Step 5
-  #     custom_executor_spec=executor_spec.ExecutorClassSpec(GenericExecutor), # Step 5
-  #     examples=transform.outputs['transformed_examples'], # Step 5
-  #     transform_graph=transform.outputs['transform_graph'], # Step 5
-  #     schema=infer_schema.outputs['schema'], # Step 5
-  #     train_args=trainer_pb2.TrainArgs(num_steps=10000), # Step 5
-  #     eval_args=trainer_pb2.EvalArgs(num_steps=5000)) # Step 5
+  trainer = Trainer( # Step 5
+      module_file=module_file, # Step 5
+      custom_executor_spec=executor_spec.ExecutorClassSpec(GenericExecutor), # Step 5
+      examples=transform.outputs['transformed_examples'], # Step 5
+      transform_graph=transform.outputs['transform_graph'], # Step 5
+      schema=infer_schema.outputs['schema'], # Step 5
+      train_args=trainer_pb2.TrainArgs(num_steps=10000), # Step 5
+      eval_args=trainer_pb2.EvalArgs(num_steps=5000)) # Step 5
 
   # Get the latest blessed model for model validation.
-  # model_resolver = resolver.Resolver(  # Step 6
-  #     strategy_class=latest_blessed_model_resolver.LatestBlessedModelResolver,  # Step 6
-  #     model=Channel(type=Model),  # Step 6
-  #     model_blessing=Channel(type=ModelBlessing)).with_id(  # Step 6
-  #         'latest_blessed_model_resolver')  # Step 6
+  model_resolver = resolver.Resolver(  # Step 6
+      strategy_class=latest_blessed_model_resolver.LatestBlessedModelResolver,  # Step 6
+      model=Channel(type=Model),  # Step 6
+      model_blessing=Channel(type=ModelBlessing)).with_id(  # Step 6
+          'latest_blessed_model_resolver')  # Step 6
 
   # Uses TFMA to compute a evaluation statistics over features of a model and
   # perform quality validation of a candidate model (compared to a baseline).
-  # eval_config = tfma.EvalConfig( # Step 6
-  #     model_specs=[tfma.ModelSpec(label_key='tips')], # Step 6
-  #     slicing_specs=[tfma.SlicingSpec()], # Step 6
-  #     metrics_specs=[ # Step 6
-  #         tfma.MetricsSpec(metrics=[ # Step 6
-  #             tfma.MetricConfig( # Step 6
-  #                 class_name='BinaryAccuracy', # Step 6
-  #                 threshold=tfma.MetricThreshold( # Step 6
-  #                     value_threshold=tfma.GenericValueThreshold( # Step 6
-  #                         lower_bound={'value': 0.6}), # Step 6
-  #                     change_threshold=tfma.GenericChangeThreshold( # Step 6
-  #                         direction=tfma.MetricDirection.HIGHER_IS_BETTER, # Step 6
-  #                         absolute={'value': -1e-10}))) # Step 6
-  #         ]) # Step 6
-  #     ]) # Step 6
+  eval_config = tfma.EvalConfig( # Step 6
+      model_specs=[tfma.ModelSpec(label_key='tips')], # Step 6
+      slicing_specs=[tfma.SlicingSpec()], # Step 6
+      metrics_specs=[ # Step 6
+          tfma.MetricsSpec(metrics=[ # Step 6
+              tfma.MetricConfig( # Step 6
+                  class_name='BinaryAccuracy', # Step 6
+                  threshold=tfma.MetricThreshold( # Step 6
+                      value_threshold=tfma.GenericValueThreshold( # Step 6
+                          lower_bound={'value': 0.6}), # Step 6
+                      change_threshold=tfma.GenericChangeThreshold( # Step 6
+                          direction=tfma.MetricDirection.HIGHER_IS_BETTER, # Step 6
+                          absolute={'value': -1e-10}))) # Step 6
+          ]) # Step 6
+      ]) # Step 6
 
-  # model_analyzer = Evaluator( # Step 6
-  #     examples=example_gen.outputs['examples'], # Step 6
-  #     model=trainer.outputs['model'], # Step 6
-  #     baseline_model=model_resolver.outputs['model'], # Step 6
-  #     # Change threshold will be ignored if there is no baseline (first run). # Step 6
-  #     eval_config=eval_config) # Step 6
+  model_analyzer = Evaluator( # Step 6
+      examples=example_gen.outputs['examples'], # Step 6
+      model=trainer.outputs['model'], # Step 6
+      baseline_model=model_resolver.outputs['model'], # Step 6
+      # Change threshold will be ignored if there is no baseline (first run). # Step 6
+      eval_config=eval_config) # Step 6
 
   # Checks whether the model passed the validation steps and pushes the model
   # to a file destination if check passed.
-  # pusher = Pusher( # Step 7
-  #     model=trainer.outputs['model'], # Step 7
-  #     model_blessing=model_analyzer.outputs['blessing'], # Step 7
-  #     push_destination=pusher_pb2.PushDestination( # Step 7
-  #         filesystem=pusher_pb2.PushDestination.Filesystem( # Step 7
-  #             base_directory=serving_model_dir))) # Step 7
+  pusher = Pusher( # Step 7
+      model=trainer.outputs['model'], # Step 7
+      model_blessing=model_analyzer.outputs['blessing'], # Step 7
+      push_destination=pusher_pb2.PushDestination( # Step 7
+          filesystem=pusher_pb2.PushDestination.Filesystem( # Step 7
+              base_directory=serving_model_dir))) # Step 7
 
   return pipeline.Pipeline(
       pipeline_name=pipeline_name,
@@ -175,11 +175,11 @@ def _create_pipeline(pipeline_name: Text, pipeline_root: Text, data_root: Text,
           statistics_gen, # Step 3
           infer_schema, # Step 3
           validate_stats, # Step 3
-          # transform, # Step 4
+          transform, # Step 4
           trainer, # Step 5
-          # model_resolver, # Step 6
-          # model_analyzer, # Step 6
-          # pusher, # Step 7
+          model_resolver, # Step 6
+          model_analyzer, # Step 6
+          pusher, # Step 7
       ],
       enable_cache=True,
       metadata_connection_config=metadata.sqlite_metadata_connection_config(
