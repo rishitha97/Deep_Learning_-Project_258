@@ -11,10 +11,10 @@ Deliverables:
 * [In-depth Video Presentation]()
 * [Project Report](https://github.com/shrey1234/Deep_Learning_-Project_258/blob/main/Project%20258_Image%20Captioning.pdf)
 * [Project Powerpoint](https://github.com/shrey1234/Deep_Learning_-Project_258/blob/main/Project%20258_Image%20Captioning.pptx)
-* Colab Model - [TF model](https://github.com/shrey1234/Deep_Learning_-Project_258/blob/main/Image%20captioning.ipynb)
+* Colab Model - [TF model](https://colab.research.google.com/drive/1tA15NyR_7R3Q3Wnd3-QAyuHa4vSnTka8)
 
 Experiments:
-* [TFX Pipeline](https://github.com/shrey1234/Deep_Learning_-Project_258/blob/main/TFX-Image%20Captioning%20V2.ipynb) 
+* [TFX Pipeline](https://colab.research.google.com/drive/1999BDrsJNIbV-kEq9iNC4ToEm86eZK3D) 
 * [Airflow](https://github.com/shrey1234/Deep_Learning_-Project_258/tree/main/tfx-airflow)
 
 Overview of Encoder-Decoder Model Architecture
