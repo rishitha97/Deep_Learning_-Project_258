@@ -11,6 +11,10 @@ Deliverables:
 * [In-depth Video Presentation]()
 * [Project Report](https://github.com/shrey1234/Deep_Learning_-Project_258/blob/main/Project%20258_Image%20Captioning.pdf)
 * [Project Powerpoint](https://github.com/shrey1234/Deep_Learning_-Project_258/blob/main/Project%20258_Image%20Captioning.pptx)
+* [Dataset](https://drive.google.com/drive/folders/0AH1RNpnH5Mp6Uk9PVA)
+* [TFrecords and checkpoints](https://drive.google.com/drive/folders/0AH1RNpnH5Mp6Uk9PVA)
+
+
 * Colab Model - [TF model](https://colab.research.google.com/drive/1tA15NyR_7R3Q3Wnd3-QAyuHa4vSnTka8)
 
 Experiments:
