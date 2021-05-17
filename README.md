@@ -7,7 +7,7 @@
 **Objective:** The goal of our application is to generate captions for images. We have used encoder decoder model using bahdanau attention. 
 
 Deliverables:
-* [Webapp] Localhost:3000
+* [Webapp] Localhost:5000/upload
 * [In-depth Video Presentation]()
 * [Project Report](https://github.com/shrey1234/Deep_Learning_-Project_258/blob/main/Project%20258_Image%20Captioning.pdf)
 * [Project Powerpoint](https://github.com/shrey1234/Deep_Learning_-Project_258/blob/main/Project%20258_Image%20Captioning.pptx)
