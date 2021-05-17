@@ -1,0 +1,15 @@
+<html>
+<head>
+    <title>Image Captioning</title>
+</head>
+<body>
+    <h1 style="text-align:center; color:blue;">Lets Caption it!!</h1>
+    <br>
+<form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
+    <input type=file name=photo id=photo >
+    <input type="submit">
+</form>
+</body>
+</html>
+
+
