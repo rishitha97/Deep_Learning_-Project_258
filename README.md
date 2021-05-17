@@ -19,7 +19,7 @@ Deliverables:
 
 Experiments:
 * [TFX Pipeline](https://colab.research.google.com/drive/1999BDrsJNIbV-kEq9iNC4ToEm86eZK3D) 
-* [TF Records] (https://colab.research.google.com/drive/1XKTY6WeH6r-D6ktOFtPuP7-i0pLSulrO#scrollTo=RfUXmAMPDLob)
+* [TF Records](https://colab.research.google.com/drive/1XKTY6WeH6r-D6ktOFtPuP7-i0pLSulrO#scrollTo=RfUXmAMPDLob)
 * [Airflow](https://github.com/shrey1234/Deep_Learning_-Project_258/tree/main/tfx-airflow)
 
 Overview of Encoder-Decoder Model Architecture
