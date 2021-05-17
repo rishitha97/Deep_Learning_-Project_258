@@ -8,7 +8,7 @@
 
 Deliverables:
 * [Webapp] Localhost:5000/upload (run "python deploy.py"  templates for the web application are in templates folder)
-* [In-depth Video Presentation]()
+* [In-depth Video Presentation](https://drive.google.com/drive/folders/0AH1RNpnH5Mp6Uk9PVA)
 * [Project Report](https://github.com/shrey1234/Deep_Learning_-Project_258/blob/main/Project%20258_Image%20Captioning.pdf)
 * [Project Powerpoint](https://github.com/shrey1234/Deep_Learning_-Project_258/blob/main/Project%20258_Image%20Captioning.pptx)
 * [Dataset](https://drive.google.com/drive/folders/0AH1RNpnH5Mp6Uk9PVA)
